@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Card" ALTER COLUMN "elementType" DROP NOT NULL,
+ALTER COLUMN "rarity" DROP NOT NULL,
+ALTER COLUMN "stage" DROP NOT NULL;

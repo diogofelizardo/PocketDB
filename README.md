@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PocketDB 🎴
 
-## Getting Started
+Base de dados para cartas de Pokémon TCG usando Prisma e Next.js.
 
-First, run the development server:
+## 📋 Sumário
+- [🚀 Como Começar](#-como-começar)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Instalação](#instalação)
+  - [Configuração do Banco de Dados](#configuração-do-banco-de-dados)
+- [📂 Estrutura do Projeto](#-estrutura-do-projeto)
+- [👥 Contribuição](#-contribuição)
+- [📄 Licença](#-licença)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Como Começar
+
+### Pré-requisitos
+
+- **Node.js** (versão 14 ou superior)
+- **npm** ou **yarn** para gerenciamento de pacotes
+- **PostgreSQL**
+
+### 🛠️ Instalação
+
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/diogofelizardo/PocketDB.git
+   cd PocketDB
+   ```
+
+2. **Instale as dependências**:
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
+
+3. **Configure a variável de ambiente do banco de dados**:
+   No arquivo `.env`, adicione a seguinte linha (substitua os valores de acordo com o seu banco de dados):
+   ```env
+   DATABASE_URL="postgresql://user:password@localhost:5432/pocketdb?schema=public"
+   ```
+
+4. **Configuração do Prisma**:
+   - Gere os arquivos do Prisma:
+     ```bash
+     npx prisma generate
+     ```
+   - Execute as migrações para criar as tabelas no banco de dados:
+     ```bash
+     npx prisma db push
+     ```
+
+5. **Popule o banco de dados** com dados iniciais:
+   ```bash
+   npm run seed
+   ```
+
+## 📂 Estrutura do Projeto
+
+```plaintext
+PocketDB/
+├── prisma/
+│   ├── schema.prisma       # Esquema do banco de dados
+│   ├── migrations/         # Histórico de migrações do banco de dados
+│   ├── seed.ts             # Script para popular o banco de dados
+│   ├── data/
+│   │   └── pokemon-data.ts # Dados de exemplo para popular o banco
+│   └── types/
+│       └── seed-types.ts   # Definições de tipos para dados de seed
+├── app/                    # Diretório principal da aplicação Next.js
+│   └── api/                # Rotas da API
+├── components/             # Componentes React reutilizáveis
+├── lib/                    # Bibliotecas e utilidades
+├── public/                 # Arquivos estáticos
+│   └── images/             # Imagens do projeto
+├── .env                    # Variáveis de ambiente
+├── .env.example            # Exemplo de variáveis de ambiente
+├── .gitignore              # Arquivos ignorados pelo Git
+├── package.json            # Dependências e scripts do projeto
+├── tsconfig.json           # Configuração do TypeScript
+└── README.md               # Documentação do projeto
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📁 Descrição dos Diretórios Principais
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **`prisma/`**: Contém toda a configuração e schemas do Prisma ORM
+- **`app/`**: Componentes e lógica principal do Next.js
+- **`components/`**: Componentes React reutilizáveis
+- **`lib/`**: Funções e configurações compartilhadas
+- **`public/`**: Arquivos estáticos acessíveis publicamente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👥 Contribuição
 
-## Learn More
+1. Crie uma branch para sua feature:
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
+2. Faça commit das suas mudanças:
+   ```bash
+   git commit -m 'Add: nova feature incrível'
+   ```
+3. Envie para o repositório remoto:
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
+4. Abra um Pull Request na branch principal.
 
-To learn more about Next.js, take a look at the following resources:
+## 📄 Licença
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Este projeto está licenciado sob a GNU General Public License v3.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)

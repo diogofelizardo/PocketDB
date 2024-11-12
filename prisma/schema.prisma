@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ElementType {
+  GRASS
+  FIRE
+  WATER
+  LIGHTNING
+  PSYCHIC
+  FIGHTING
+  DARKNESS
+  METAL
+  DRAGON
+  COLORLESS
+}
+
+enum MechanicType {
+  EX
+}
+
+enum CardType {
+  POKEMON
+  TRAINER
+  ITEM
+  SUPPORTER
+  TOOL
+}
+
+enum Rarity {
+  DIAMOND_1      @map("◊")
+  DIAMOND_2      @map("◊◊")
+  DIAMOND_3      @map("◊◊◊")
+  DIAMOND_4      @map("◊◊◊◊")
+  STAR_1         @map("☆")
+  STAR_2         @map("☆☆")
+  STAR_3         @map("☆☆☆")
+  CROWN_RARE
+  PROMO
+}
+
+enum Stage {
+  BASIC
+  STAGE_1
+  STAGE_2
+}
+
+model Set {
+  id          String  @id @default(cuid())
+  name        String  @unique
+  codeName    String?
+  image       String?
+  releaseDate DateTime?
+  packs       Pack[]
+  cards       Card[]
+}
+
+model Pack {
+  id     String  @id @default(cuid())
+  name   String
+  setId  String
+  set    Set     @relation(fields: [setId], references: [id])
+  cards  Card[]
+
+  @@unique([name, setId])
+}
+
+model Card {
+  id              String      @id @default(cuid())
+  pokedexNumber   Int?
+  image           String
+  name            String
+  text            String
+  hp              Int?
+  elementType     ElementType?
+  weakness        ElementType?
+  mechanic        MechanicType?
+  cardType        CardType
+  retreatCost     Int?
+  hasSkill        Boolean     @default(false)
+  skillDescription String?
+  artistName      String?
+  rarity          Rarity?
+  stage           Stage?
+  
+  // Relações
+  setId           String
+  set             Set         @relation(fields: [setId], references: [id])
+  packId          String?
+  pack            Pack?       @relation(fields: [packId], references: [id])
+  
+  // Auto-relacionamento para versões
+  versions        Card[]      @relation("CardVersions")
+  versionOf       Card[]      @relation("CardVersions")
+
+  // Nova relação para evolução
+  evolvesFromId    String?
+  evolvesFrom      Card?       @relation("Evolution", fields: [evolvesFromId], references: [id])
+  evolvesTo        Card[]      @relation("Evolution")
+
+  @@index([pokedexNumber])
+}
