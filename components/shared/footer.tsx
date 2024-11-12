@@ -17,7 +17,7 @@ export function Footer() {
               <h4 className="font-semibold mb-4">Contribua com o Projeto</h4>
               <p className="text-sm text-muted-foreground max-w-[300px]">
                 Este é um projeto open source e você pode contribuir! Visite nosso
-                <a href="https://github.com/seu-usuario/seu-repo" className="text-primary hover:underline ml-1">
+                <a href="https://github.com/diogofelizardo/PocketDB" className="text-primary hover:underline ml-1">
                   repositório no GitHub
                 </a>
               </p>
