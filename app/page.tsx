@@ -68,7 +68,7 @@ export default function Home() {
                   className="min-w-[200px] h-[280px] bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform duration-200"
                 >
                   <Image
-                    src={`/card-${index}.webp`}
+                    src={`/images/card-${index}.webp`}
                     alt={`Pokémon Card ${index}`}
                     className="w-full h-full object-cover"
                     width={200}
