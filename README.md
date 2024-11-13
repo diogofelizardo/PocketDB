@@ -105,6 +105,92 @@ PocketDB/
    ```
 4. Abra um Pull Request na branch principal.
 
+## 🎯 Funcionalidades Planejadas
+
+### Prioridade Alta
+- [ ] Sistema de Autenticação
+  - [ ] Login com email/senha
+  - [ ] Login social (Google, Discord)
+  - [ ] Perfil do usuário
+  - [ ] Recuperação de senha
+
+- [ ] Gerenciamento de Coleção
+  - [ ] Adicionar cartas à coleção pessoal
+  - [ ] Marcar cartas como "Quero" ou "Tenho para troca"
+  - [ ] Registrar múltiplas cópias
+
+- [ ] Expansão do Banco de Dados
+  - [ ] Adicionar mais sets de cartas
+  - [ ] Incluir informações detalhadas de cada carta (ataques, habilidades, etc)
+  - [ ] Sistema de versionamento para diferentes impressões da mesma carta
+
+### Prioridade Média
+- [ ] Sistema de Torneios
+  - [ ] Criação e gerenciamento de torneios
+  - [ ] Diferentes formatos (Swiss, Eliminação simples, etc)
+  - [ ] Sistema de pontuação
+  - [ ] Histórico de partidas
+  - [ ] Ranking de jogadores
+
+- [ ] Construtor de Decks
+  - [ ] Interface drag-and-drop para montagem
+  - [ ] Validação de regras do formato
+  - [ ] Compartilhamento de decks
+  - [ ] Exportação/Importação de decks
+
+- [ ] Sistema de Trocas
+  - [ ] Listagem de cartas disponíveis para troca
+  - [ ] Sistema de mensagens entre usuários
+  - [ ] Avaliações de trocas realizadas
+  - [ ] Histórico de trocas
+
+### Prioridade Baixa
+- [ ] Recursos da Comunidade
+  - [ ] Fórum de discussão
+  - [ ] Reviews de cartas
+  - [ ] Guias e estratégias
+  - [ ] Sistema de comentários
+
+- [ ] Análise de Preços
+  - [ ] Histórico de preços
+  - [ ] Integração com marketplaces
+  - [ ] Alertas de preço
+  - [ ] Tendências do mercado
+
+- [ ] Recursos Avançados
+  - [ ] API pública para desenvolvedores
+  - [ ] Aplicativo mobile
+  - [ ] Suporte a múltiplos idiomas
+  - [ ] Tema escuro/claro
+
+### Melhorias Técnicas
+- [ ] Otimizações
+  - [ ] Cache de imagens
+  - [ ] Lazy loading
+  - [ ] Paginação infinita
+  - [ ] Melhorias de SEO
+
+- [ ] Infraestrutura
+  - [ ] CI/CD
+  - [ ] Testes automatizados
+  - [ ] Monitoramento de erros
+  - [ ] Backup automático
+
+## 🤝 Como Contribuir
+
+Se você deseja contribuir com alguma dessas funcionalidades:
+
+1. Verifique as [Issues](https://github.com/diogofelizardo/PocketDB/issues) para ver se a funcionalidade já está sendo desenvolvida
+2. Crie uma nova issue descrevendo a funcionalidade que você quer implementar
+3. Faça um fork do projeto
+4. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+5. Implemente suas mudanças
+6. Faça commit das alterações (`git commit -m 'Add: nova funcionalidade incrível'`)
+7. Push para a branch (`git push origin feature/AmazingFeature`)
+8. Abra um Pull Request
+
+
+
 ## 📄 Licença
 
 Este projeto está licenciado sob a GNU General Public License v3.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
