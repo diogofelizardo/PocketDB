@@ -3,6 +3,7 @@ import { use, useEffect, useState } from 'react';
 import { Card } from '@prisma/client';
 import { getBaseUrl } from '@/lib/utils';
 import Image from 'next/image';
+import { Diamond, Star, Crown, Gift } from 'lucide-react';
 
 export default function CardDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const [card, setCard] = useState<Card | null>(null);
@@ -54,6 +55,21 @@ export default function CardDetailPage({ params }: { params: Promise<{ id: strin
     METAL: { bg: 'bg-slate-100', text: 'text-slate-800', border: 'border-slate-300' },
     DRAGON: { bg: 'bg-amber-100', text: 'text-amber-800', border: 'border-amber-300' },
     COLORLESS: { bg: 'bg-zinc-100', text: 'text-zinc-800', border: 'border-zinc-300' }
+  };
+
+  const RarityIcon = ({ type, size = 16 }: { type: string, size?: number }) => {
+    switch (type) {
+      case 'DIAMOND_1': return <Diamond size={size} />;
+      case 'DIAMOND_2': return <div className="flex"><Diamond size={size} /><Diamond size={size} /></div>;
+      case 'DIAMOND_3': return <div className="flex"><Diamond size={size} /><Diamond size={size} /><Diamond size={size} /></div>;
+      case 'DIAMOND_4': return <div className="flex"><Diamond size={size} /><Diamond size={size} /><Diamond size={size} /><Diamond size={size} /></div>;
+      case 'STAR_1': return <Star size={size} />;
+      case 'STAR_2': return <div className="flex"><Star size={size} /><Star size={size} /></div>;
+      case 'STAR_3': return <div className="flex"><Star size={size} /><Star size={size} /><Star size={size} /></div>;
+      case 'CROWN_RARE': return <Crown size={size} />;
+      case 'PROMO': return <Gift size={size} />;
+      default: return null;
+    }
   };
 
   return (
@@ -144,9 +160,9 @@ export default function CardDetailPage({ params }: { params: Promise<{ id: strin
                     </div>
                   )}
                   {card.rarity && (
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 items-center">
                       <span className="text-gray-700 font-medium">Raridade:</span>
-                      <span className="text-gray-600">{card.rarity}</span>
+                      <RarityIcon type={card.rarity} />
                     </div>
                   )}
                 </div>
