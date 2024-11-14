@@ -2,13 +2,15 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: Request
 ) {
   try {
+    const data = await request.json();
+    const { id } = data as { id: string };
+
     const card = await prisma.card.findUnique({
       where: {
-        id: params.id
+        id
       }
     });
 

@@ -1,12 +1,11 @@
 "use client";
-import { Suspense } from 'react';
 import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Card } from '@prisma/client';
 import CardItem from '@/components/cards/card-item';
 import { getBaseUrl } from '@/lib/utils';
 
-function SearchContent() {
+export default function SearchContent() {
   const searchParams = useSearchParams();
   const initialSearch = searchParams.get('q') || '';
   
@@ -73,14 +72,3 @@ function SearchContent() {
   );
 }
 
-export default function SearchPage() {
-  return (
-    <Suspense fallback={
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
-      </div>
-    }>
-      <SearchContent />
-    </Suspense>
-  );
-} 

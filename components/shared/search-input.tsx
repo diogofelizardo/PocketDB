@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { Prisma } from "@prisma/client";
 import { getBaseUrl } from "@/lib/utils";
+import Image from "next/image";
 
 type CardWithSet = Prisma.CardGetPayload<{
   select: {
@@ -106,10 +107,12 @@ export function SearchInput({ initialSearch = '', className = '' }: SearchInputP
               >
                 <div className="flex items-center gap-3">
                   <div className="relative w-12 h-12 rounded-md overflow-hidden border border-gray-200">
-                    <img 
+                    <Image 
                       src={card.image} 
                       alt={card.name} 
                       className="object-cover w-full h-full hover:scale-110 transition-transform duration-200" 
+                      width={100}
+                      height={100}
                     />
                   </div>
                   <div className="flex flex-col">
