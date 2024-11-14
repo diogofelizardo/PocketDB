@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
 export async function GET(
-  request: Request
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const data = await request.json();
-    const { id } = data as { id: string };
+    const { id } = await params;
 
     const card = await prisma.card.findUnique({
       where: {
