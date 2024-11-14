@@ -1,11 +1,19 @@
 import { Card } from "@prisma/client";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 
 export default function CardItem({ card }: { card: Card }) {
+  const router = useRouter();
+
+  const handleCardClick = () => {
+    router.push(`/cards/${card.id}`);
+  };
+  
   return (
     <div
       key={card.id}
-      className="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200"
+      onClick={handleCardClick}
+      className="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200 cursor-pointer"
     >
       <div className="relative pt-[139%]">
         <Image
